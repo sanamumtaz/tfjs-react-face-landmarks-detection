@@ -16,6 +16,7 @@ function App() {
   
   return (
     <div className="App">
+      <h2>TF Face Landmarks Detection - Face Filters</h2>
       <button onClick={() => changeFilterType()}>
         {filterType ? "Mask Filter" : "Dog Filter"}
       </button><br/>

@@ -99,10 +99,8 @@ export const OutputCanvas = (props) => {
     const model = await facemesh.load(
       facemesh.SupportedPackages.mediapipeFacemesh
     )
-    videoElement.width = videoElement.videoWidth
-    videoElement.height = videoElement.videoHeight
-    canvasElement.width = videoElement.videoWidth
-    canvasElement.height = videoElement.videoHeight
+    videoElement.width = canvasElement.width = videoElement.videoWidth
+    videoElement.height = canvasElement.height = videoElement.videoHeight
 
     detectFeatureAndApplyFilter(model)
   }
@@ -113,16 +111,26 @@ export const OutputCanvas = (props) => {
 
   return (
     <>
-      <video ref={videoRef} id="input" muted></video>
+      <video
+        ref={videoRef}
+        id="input"
+        muted
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          margin: "auto",
+          zindex: 1,
+        }}
+      ></video>
       <canvas
         ref={canvasReference}
         id="canvas"
         style={{
-          marginLeft: "auto",
-          marginRight: "auto",
+          position: "absolute",
           left: 0,
           right: 0,
-          textAlign: "center",
+          margin: "auto",
           zindex: 9,
         }}
       />
